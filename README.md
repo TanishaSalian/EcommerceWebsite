@@ -105,7 +105,7 @@ Some routes required extensive debugging due to session-related errors and datab
 Integrating the front-end templates with back-end logic took longer than expected.
 Despite these challenges, I ensured that all required functionalities were implemented with correct logic in the codebase.
 
-8.	Access the application at http://127.0.0.1:5000.
+8.	Access the application at http://127.0.0.1:5001.
 	
 9. Challenges
 While the development of BookHaven remains incomplete due to time constraints and unforeseen debugging challenges, I have made every effort to implement the essential functionalities and logic. Although a few navigation issues arose at the last moment, which was unfortunate, I strived to cover all key segments effectively. I sincerely hope that the work done so far reflects my dedication and effort.
