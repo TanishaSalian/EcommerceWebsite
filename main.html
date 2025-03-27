@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block title %}Book Haven - Home{% endblock %}
+
+{% block content %}
+<section class="search">
+	<div class="container">
+		<h2>Find your books at Affordable prices</h2>
+		<form action="{{url_for('products')}}"class="btn btn-primary">Browse books</form>
+	</div>
+	
+</section>
+
+<section class="featured-products">
+	<div class="container">
+		<h2>Books Made Just for You</h2>
+		<div class="book-grid">
+			{% for books in books %}
+			<div class="books">
+				<img src="{{book.image}}" alt={{book.title}}>
+				<div class="bookinfo">
+					<h3>{{book.title}}</h3>
+					<p class="author">{{book.author}}</p>
+					<p class="price">{{book.price}}</p>
+					<div class="book-actions">
+						<a href="{{url_for('products_detail','book_id=book.id')}}"class="btn btn-primary">Info</a>
+						<a href="{{url_for('add_to_cart','book_id=book.id')}}"class="btn btn-secondary">Buy Now</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{%endblock%}
+							

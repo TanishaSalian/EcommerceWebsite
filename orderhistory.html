@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+{% block title %}Book Haven - Order History{% endblock %}
+
+{% block content %}
+    
+     <section class="order-history">
+        <div class="container">
+            <h2>Your order history</h2>
+            {% if orders %}
+            {% for order in orders %}
+                <div class="order">
+                    <div class="order-header">
+                        <div>
+                            <span>Order #{{ order.id }}</span>
+                            <span> - {{ order.date_created }}</span>
+                        </div>
+                        <div>
+                            <span>Status: {{ order.status }}</span>
+                            <span> - Total: ${{ "%.2f"|format(order.total_price) }}</span>
+                        </div>
+                    </div>
+                    <div class="order-details">
+                        <p>Items: {{ order.item_count }}</p>
+                        <button class="btn btn-secondary order-toggle" data-order-id="{{ order.id }}">Show Items</button>
+                        
+                        <div id="order-items-{{ order.id }}" class="order-items" style="display: none;">
+                            {% for item in order.items %}
+                                <div class="order-item">
+                                    <img src="{{ item.image }}" alt="{{ item.title }}">
+                                    <div>
+                                        <h4>{{ item.title }}</h4>
+                                        <p>by {{ item.author }}</p>
+                                        <p>Price: ${{ item.price }}</p>
+                                        <p>Quantity: {{ item.quantity }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>You have no orders yet.</p>
+            <a href="{{ url_for('products') }}" class="btn btn-primary">Browse Books</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

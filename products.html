@@ -1,0 +1,40 @@
+% extends 'index.html' %}
+
+{% block title %}Book Haven - All Books{% endblock %}
+
+{% block content %}
+
+<section class="products">
+        <div class="container">
+            <h2>Featured Books</h2>
+
+        <div class="container">
+            <h2>Search for your Favourite Books</h2>
+            <form action="{{ url_for('product_details')}}" method="GET">
+                <input type="text" name="query" placeholder="Search for book title or author" value="{{query}}">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+     
+            <div class="book-grid">
+                {% for product in products %}
+                <div class="book">
+                     <img src="{{ book.image}}"alt={{book.title}}>
+                <div class="bookinfo">
+                <h3>{{book.title}}</h3>
+                <p class="author">{{book.author}}</p>
+                <p class="price">${{book.price}}</p>
+                  <div class="book-actions">
+                    <a href="{{ url_for('product_details',book_id=book.id )}}" class="btn btn-primary">Info</a>
+                    <a href="{{ url_for('add_to_cart',book_id=book.id )}}" class="btn btn-secondary">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    
+    
+ {%endblock%}
